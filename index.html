@@ -164,14 +164,14 @@
     <!---------------------------------------------------------------- Script show-task.html ---------------------------------------------------------------->
  
 <script id="show-task.html" type="text/ng-template">
-<div class="modal2">
+<div class="modal2"><div class="modal">
 <!-- Modal header bar -->
 <ion-header-bar class="bar-secondary">
       <h1 class="title"><b>View Task<b><br></h1>
       <button class="button button-clear button-positive" ng-click="closeShowTask()"><b><b>Close</b></b></button>
     </ion-header-bar>
 	    <!-- Modal content area -->
-    <ion-content ><div padding>
+    <ion-content><div>
 	<center><middle>
 	<p>{{activeTask.title}}</p>
 	<p>{{activeTask.date}}</p>
@@ -183,7 +183,7 @@
 	<button class="button button-block button-positive" ng-click="deleteTask(task, $index)"ng-class="{active: activeTask == task}" >Delete Task</button></div>
 	</center></div>
 	</ion-content>
-</div>
+</div></div>
 </script>
 
     </body>
