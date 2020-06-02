@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>*-+
+  <head>
+    <meta charset="utf-8">
+    <title>Todo</title>
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+
+    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
+
+    <script src="lib/ionic/js/ionic.bundle.js"></script>
+
+    <!-- Needed for Cordova/PhoneGap (will be a 404 during development) -->
+	
+	
+    <script src="js/app.js"></script>
+	<script src="cordova.js"></script>
+  </head>
+  
+  
+<body ng-app="todo" ng-controller="TodoCtrl"> 
+
+  <ion-side-menus>
+  
+  <!-- Center content -->
+  <ion-side-menu-content>
+    <ion-header-bar class="bar-dark">
+      <h1 class="title">Todo</h1>
+      <!-- New Task button-->
+      <button class="button button-icon" ng-click="newTask()">
+        <i class="icon ion-add">Create Task</i>
+      </button>
+    </ion-header-bar>
+    <ion-content>
+      <!-- our list and list items -->
+      <ion-list>
+        <ion-item ng-repeat="task in tasks" ng-click="showTask(task, $index)" ng-class="{active: activeTask == task}">
+ 
+         <div>{{task.title}}</div><div>{{task.date}}</div>
+        </ion-item>
+      </ion-list>
+    </ion-content>
+  </ion-side-menu-content>
+</ion-side-menus>
+
+<!-------------------------------------------------------------- Script new-task.html ------------------------------------------------------------------->
+
+<script id="new-task.html" type="text/ng-template">
+
+  <div class="modal">
+
+    <!-- Modal header bar -->
+    <ion-header-bar class="bar-secondary">
+      <h1 class="title">New Task</h1>
+      <button class="button button-clear button-positive" ng-click="closeNewTask()">Cancel</button>
+    </ion-header-bar>
+
+    <!-- Modal content area -->
+    <ion-content>
+
+      <form ng-submit="createTask(task)">
+        <div class="list">
+          <label class="item item-input">
+            <input type="text" placeholder="Name(max 20 characters)" ng-model="task.title" maxlength="20">
+          </label>
+		  <br>
+		
+		<label><b>Target Date</b></label>
+		<input type="datetime-local" ng-model="task.date">
+		
+			</div>
+		
+		<!-- Description -->
+		<div><label>Description</label>
+		<input type="text" ng-model="task.desc" placeholder="Description(max 200 characters)" maxlength="200">
+		</div>  
+     
+
+	 <!-- Priority -->
+	 <div><br>
+	 <label><b> Priority (0-5)<b></label>
+	<select name="priorities" ng-model="task.priority">
+	<option value="0">0</option>
+	<option value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	</select>
+	 
+	 </div>
+	 
+	 
+        <div class="padding">
+          <button type="submit" class="button button-block button-positive" ng-click="closeNewTask()" >Create Task</button>
+        </div>
+      </form>
+
+    </ion-content>
+
+  </div>
+
+</script>
+
+<!-------------------------------------------------------------- Script update-task.html ------------------------------------------------------------------->
+
+<script id="update-task.html" type="text/ng-template">
+
+  <div class="modal3" class="scope">
+
+    <!-- Modal header bar -->
+    <ion-header-bar class="bar-dark">
+      <h1 class="title">Update Task</h1>
+      <!--<button class="button button-clear button-positive" ng-click="closeUpdateTask()">Cancel</button>--!>
+    </ion-header-bar>
+
+    <!-- Modal content area -->
+    <ion-content>
+		<form ng-submit="modifyTask(activeTask)">
+        <div class="list">
+          <label class="item item-input">
+            <input type="text" placeholder="Name(max 20 characters)" ng-model="activeTask.title" maxlength="20">
+          </label>
+		  <br>
+		
+		<label><b>Target Date</b></label>
+		<input type="datetime"  ng-model="activeTask.date">
+		
+			</div>
+		
+		<!-- Description -->
+		<div><label>Description</label>
+		<input type="text" ng-model="activeTask.desc" placeholder="Description(max 200 characters)" maxlength="200">
+		</div>  
+     
+
+	 <!-- Priority -->
+	 <div><br>
+	 <label><b> Priority (0-5)<b></label>
+	<select name="priorities" ng-model="activeTask.priority">
+	<option value="0">0</option>
+	<option value="1">1</option>
+	<option value="2">2</option>
+	<option value="3">3</option>
+	<option value="4">4</option>
+	<option value="5">5</option>
+	</select>
+	 
+	 </div>
+	 <div class="padding">
+          <button type="submit" class="button button-block button-positive">Save Changes</button>
+        </div>
+      </form>
+
+    </ion-content>
+
+	 
+        
+  </div>
+
+</script>
+
+
+
+    <!---------------------------------------------------------------- Script show-task.html ---------------------------------------------------------------->
+ 
+<script id="show-task.html" type="text/ng-template">
+<div class="modal2">
+<!-- Modal header bar -->
+<ion-header-bar class="bar-secondary">
+      <h1 class="title"><b>View Task<b><br></h1>
+      <button class="button button-clear button-positive" ng-click="closeShowTask()"><b><b>Close</b></b></button>
+    </ion-header-bar>
+	    <!-- Modal content area -->
+    <ion-content ><div padding>
+	<center><middle>
+	<p>{{activeTask.title}}</p>
+	<p>{{activeTask.date}}</p>
+	<p>{{activeTask.desc}}</p>
+	<p>{{activeTask.priority}}</p>
+	</middle>
+	<div padding>
+	<button class="button button-block button-positive" ng-click="updateTask(activeTask, $index)" >Update Task</button></div>
+	<button class="button button-block button-positive" ng-click="deleteTask(task, $index)"ng-class="{active: activeTask == task}" >Delete Task</button></div>
+	</center></div>
+	</ion-content>
+</div>
+</script>
+
+    </body>
+</html>
