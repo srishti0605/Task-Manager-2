@@ -149,13 +149,14 @@ $scope.tasks = Tasks.all();
 	$scope.mod3.hide();
   };
   $scope.modifyTask = function(task) {
-      $activeTask=task;
+     $scope.mod3.hide();
+	  $activeTask=task;
 	  activeTask.title=task.title//=this.title;
 	  activeTask.date=task.date//=this.date;
 	  activeTask.desc=task.desc//=this.desc;
 	  activeTask.priority=task.priority//=this.priority;
  
-    $scope.mod3.hide();
+    
  
   };
   $scope.deleteTask=function(task,index) {
