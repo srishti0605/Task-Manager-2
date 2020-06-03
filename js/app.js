@@ -160,15 +160,15 @@ $scope.tasks = Tasks.all();
  
   };
   $scope.deleteTask=function(task,index) {
-	  $scope.activeTask = task;
+	 $scope.activeTask = task;
     //Tasks.setLastActiveIndex(index);
     
 	//  $scope.activeTask = task;
     //Tasks.setLastActiveIndex(index);
     
   //const index=tasks.indexOf(task);
-  this.tasks=$scope.tasks.splice(index, 1);
-  this.activeTask=$scope.activeTask.tasks.splice(index, 1);
+  this.tasks=$scope.tasks.splice(index-1);
+  this.activeTask=$scope.activeTask.tasks.splice(index-1);
   Tasks.save($scope.tasks);
 };
   
