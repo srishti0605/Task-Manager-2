@@ -161,7 +161,7 @@ $scope.tasks = Tasks.all();
   };
   $scope.deleteTask=function(task,index) {
 	  $scope.activeTask = task;
-    Tasks.setLastActiveIndex(index);
+    //Tasks.setLastActiveIndex(index);
     
 	//  $scope.activeTask = task;
     //Tasks.setLastActiveIndex(index);
