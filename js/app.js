@@ -160,6 +160,7 @@ $scope.tasks = Tasks.all();
  
   };
   $scope.deleteTask=function(task,index) {
+	  $scope.mod3.hide();
 	 $scope.activeTask = task;
     //Tasks.setLastActiveIndex(index);
     
